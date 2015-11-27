@@ -1,0 +1,30 @@
+stock:
+  environment:
+    ######## UPDATE THESE SETTINGS
+    MAIL_RECIPIENTS: "walt@venture.support,gordon@venture.support,manel@nixelsolutions.com,zirus86@gmail.com,zirus862@gmail.com"
+    TICKERS: "IBKR"
+    TWITTER_ACCOUNTS: "vensupport,makerventures,growcapitalinv"
+    ######## DO NOT MODIFY ANYTHING BELOW THIS LINE
+    CRON_EXPRESSION: "0 0 * * *"
+    MAIL_PROVIDER: "hotmail"
+    MAIL_USER: "News.Ven.Supp@outlook.com"
+    MAIL_PASSWORD: "ManelMartinez123"
+    TWITTER_CONSUMER_KEY: "dtElBHTB4a6YFBcbyradAxOH5"
+    TWITTER_CONSUMER_SECRET: "63WEpckLsaSHOamfvYlA91t0PHVXSBqmuIqBBfeyYCE90ft5kq"
+    TWITTER_ACCESS_TOKEN_SECRET: "3753510021-NG9hUeu2H4OOglXgMkoYoD9hJ6KJuQfZ9WFrCc7"
+    TWITTER_CONSUMER_KEY: "dtElBHTB4a6YFBcbyradAxOH5"
+    TWITTER_CONSUMER_SECRET: "63WEpckLsaSHOamfvYlA91t0PHVXSBqmuIqBBfeyYCE90ft5kq"
+    TWITTER_ACCESS_TOKEN_KEY: "3753510021-NG9hUeu2H4OOglXgMkoYoD9hJ6KJuQfZ9WFrCc7"
+    TWITTER_ACCESS_TOKEN_SECRET: "DFs559YfWqqYEbeQoMZPrpLp4RLZTl30ZlkXnKUek2wl8"
+  restart: always    
+  image: wroloson/email-scripts
+  links:
+  - mongodb:mongodb  
+
+mongodb:
+  environment:
+    MONGODB_PASS: "Kohf1eiseequ"  
+  restart: always
+  image: tutum/mongodb
+  volumes:
+  - /mongo/data:/data/db

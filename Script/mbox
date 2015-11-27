@@ -1,0 +1,170 @@
+From root@System  Fri Jul 17 06:35:01 2015
+Return-Path: <root@System>
+X-Original-To: root
+Delivered-To: root@System
+Received: by System (Postfix, from userid 0)
+	id 9E26E40F; Fri, 17 Jul 2015 06:35:01 -0400 (EDT)
+From: root@System (Cron Daemon)
+To: root@System
+Subject: Cron <root@System> /root/backup_mysql_databases.sh | /usr/bin/logger -t "/root/backup_mysql_databases.sh"
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=root>
+Message-Id: <20150717103501.9E26E40F@System>
+Date: Fri, 17 Jul 2015 06:35:01 -0400 (EDT)
+
+++ date +%Y%m%d-%H%M%S
++ DATE=20150717-063501
++ BACKUP_PATH=/backups/mysql/20150717-063501
++ MYSQL_CONTAINER_NAME=mysql
++ '[' '!' -e /backups/mysql/20150717-063501 ']'
++ mkdir -p /backups/mysql/20150717-063501
+++ tr -d '\r'
+++ grep -E -v 'information_schema|mysql'
+++ sed -n '2,$ p'
+++ /usr/bin/docker run -it --link mysql:mysql --rm mysql sh -c 'exec echo "show databases" | mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -s -B --skip-pager --skip-column-names -r'
+cannot enable tty mode on non tty input
++ DATABASES=
+
+From root@System  Fri Jul 17 06:39:05 2015
+Return-Path: <root@System>
+X-Original-To: root
+Delivered-To: root@System
+Received: by System (Postfix, from userid 0)
+	id 621303CEC; Fri, 17 Jul 2015 06:39:05 -0400 (EDT)
+From: root@System (Cron Daemon)
+To: root@System
+Subject: Cron <root@System> /root/backup_mysql_databases.sh | /usr/bin/logger -t "/root/backup_mysql_databases.sh"
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=root>
+Message-Id: <20150717103905.621303CEC@System>
+Date: Fri, 17 Jul 2015 06:39:05 -0400 (EDT)
+
+++ date +%Y%m%d-%H%M%S
++ DATE=20150717-063901
++ BACKUP_PATH=/backups/mysql/20150717-063901
++ MYSQL_CONTAINER_NAME=mysql
++ '[' '!' -e /backups/mysql/20150717-063901 ']'
++ mkdir -p /backups/mysql/20150717-063901
+++ tr -d '\r'
+++ grep -E -v 'information_schema|mysql'
+++ sed -n '2,$ p'
+++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec echo "show databases" | mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -s -B --skip-pager --skip-column-names -r'
+Warning: Using a password on the command line interface can be insecure.
++ DATABASES='growcap
+makerventures
+performance_schema
+venturesupport
+wroloson'
++ '[' -z growcap makerventures performance_schema venturesupport wroloson ']'
+/root/backup_mysql_databases.sh: line 14: [: too many arguments
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-063901/growcap.20150717-063901.sql
++ echo '=> Backing up database growcap into file /backups/mysql/20150717-063901/growcap.20150717-063901.sql'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables growcap'
+Warning: Using a password on the command line interface can be insecure.
++ echo '=> Database growcap backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-063901/makerventures.20150717-063901.sql
++ echo '=> Backing up database makerventures into file /backups/mysql/20150717-063901/makerventures.20150717-063901.sql'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables makerventures'
+Warning: Using a password on the command line interface can be insecure.
++ echo '=> Database makerventures backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-063901/performance_schema.20150717-063901.sql
++ echo '=> Backing up database performance_schema into file /backups/mysql/20150717-063901/performance_schema.20150717-063901.sql'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables performance_schema'
+Warning: Using a password on the command line interface can be insecure.
++ echo '=> Database performance_schema backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-063901/venturesupport.20150717-063901.sql
++ echo '=> Backing up database venturesupport into file /backups/mysql/20150717-063901/venturesupport.20150717-063901.sql'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables venturesupport'
+Warning: Using a password on the command line interface can be insecure.
++ echo '=> Database venturesupport backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-063901/wroloson.20150717-063901.sql
++ echo '=> Backing up database wroloson into file /backups/mysql/20150717-063901/wroloson.20150717-063901.sql'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables wroloson'
+Warning: Using a password on the command line interface can be insecure.
++ echo '=> Database wroloson backed up'
+
+From root@System  Fri Jul 17 06:42:04 2015
+Return-Path: <root@System>
+X-Original-To: root
+Delivered-To: root@System
+Received: by System (Postfix, from userid 0)
+	id CF2243D0C; Fri, 17 Jul 2015 06:42:04 -0400 (EDT)
+From: root@System (Cron Daemon)
+To: root@System
+Subject: Cron <root@System> /root/backup_mysql_databases.sh | /usr/bin/logger -t "/root/backup_mysql_databases.sh"
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=root>
+Message-Id: <20150717104204.CF2243D0C@System>
+Date: Fri, 17 Jul 2015 06:42:04 -0400 (EDT)
+
+++ date +%Y%m%d-%H%M%S
++ DATE=20150717-064201
++ BACKUP_PATH=/backups/mysql/20150717-064201
++ MYSQL_CONTAINER_NAME=mysql
++ '[' '!' -e /backups/mysql/20150717-064201 ']'
++ mkdir -p /backups/mysql/20150717-064201
+++ tr -d '\r'
+++ grep -E -v 'information_schema|mysql'
+++ sed -n '2,$ p'
+++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec echo "show databases" | mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -s -B --skip-pager --skip-column-names -r'
+Warning: Using a password on the command line interface can be insecure.
++ DATABASES='growcap
+makerventures
+performance_schema
+venturesupport
+wroloson'
++ '[' -z 'growcap
+makerventures
+performance_schema
+venturesupport
+wroloson' ']'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-064201/growcap.20150717-064201.sql
++ echo '=> Backing up database growcap into file /backups/mysql/20150717-064201/growcap.20150717-064201.sql.gz'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables growcap'
+Warning: Using a password on the command line interface can be insecure.
++ /bin/gzip /backups/mysql/20150717-064201/growcap.20150717-064201.sql
++ echo '=> Database growcap backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-064201/makerventures.20150717-064201.sql
++ echo '=> Backing up database makerventures into file /backups/mysql/20150717-064201/makerventures.20150717-064201.sql.gz'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables makerventures'
+Warning: Using a password on the command line interface can be insecure.
++ /bin/gzip /backups/mysql/20150717-064201/makerventures.20150717-064201.sql
++ echo '=> Database makerventures backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-064201/performance_schema.20150717-064201.sql
++ echo '=> Backing up database performance_schema into file /backups/mysql/20150717-064201/performance_schema.20150717-064201.sql.gz'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables performance_schema'
+Warning: Using a password on the command line interface can be insecure.
++ /bin/gzip /backups/mysql/20150717-064201/performance_schema.20150717-064201.sql
++ echo '=> Database performance_schema backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-064201/venturesupport.20150717-064201.sql
++ echo '=> Backing up database venturesupport into file /backups/mysql/20150717-064201/venturesupport.20150717-064201.sql.gz'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables venturesupport'
+Warning: Using a password on the command line interface can be insecure.
++ /bin/gzip /backups/mysql/20150717-064201/venturesupport.20150717-064201.sql
++ echo '=> Database venturesupport backed up'
++ for database in '$DATABASES'
++ BACKUP_FILE_PATH=/backups/mysql/20150717-064201/wroloson.20150717-064201.sql
++ echo '=> Backing up database wroloson into file /backups/mysql/20150717-064201/wroloson.20150717-064201.sql.gz'
++ /usr/bin/docker run --link mysql:mysql --rm mysql sh -c 'exec mysqldump -h$MYSQL_PORT_3306_TCP_ADDR -P$MYSQL_PORT_3306_TCP_PORT -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD --skip-lock-tables wroloson'
+Warning: Using a password on the command line interface can be insecure.
++ /bin/gzip /backups/mysql/20150717-064201/wroloson.20150717-064201.sql
++ echo '=> Database wroloson backed up'
+
