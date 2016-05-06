@@ -1,0 +1,105 @@
+mysql:
+  restart: always
+  name: mysql
+  environment:
+  - MYSQL_ROOT_PASSWORD: "Eed5Cuxeshoe"
+  volumes:
+  - /var/lib/mysql:/var/lib/mysql
+  - /etc/mysql/conf.d:/etc/mysql/conf.d
+  - /var/log/mysql:/var/log/mysql
+  image: mysql
+
+venturesupport:
+  restart: always
+  name: venturesupport
+  host: venturesupport
+  environment:
+  - WORDPRESS_DB_NAME: "venturesupport"
+  - WORDPRESS_DB_USER: "venturesupport"
+  - WORDPRESS_DB_PASSWORD: "Fo4yeodithuy4ohv"
+  - NR_INSTALL_KEY: "2d94e58eef4e96d708ca5395c6f5d7df60cebdd5" 
+  links:
+  - mysql:mysql 
+  volumes:
+  - /var/www/venturesupport:/var/www/venturesupport
+  ports:
+  - 1080:9000
+  image: nixel/wordpress-newrelic
+
+venturesupport:
+  restart: always
+  name: venturesupport
+  host: venturesupport
+  environment:
+  - WORDPRESS_DB_NAME: "venturesupport"
+  - WORDPRESS_DB_USER: "venturesupport"
+  - WORDPRESS_DB_PASSWORD: "Fo4yeodithuy4ohv"
+  - NR_INSTALL_KEY: "2d94e58eef4e96d708ca5395c6f5d7df60cebdd5" 
+  links:
+  - mysql:mysql 
+  volumes:
+  - /var/www/venturesupport:/var/www/venturesupport
+  ports:
+  - 1080:9000
+  image: nixel/wordpress-newrelic
+
+makerventures:
+  restart: always
+  name: makerventures
+  host: makerventures
+  environment:
+  - WORDPRESS_DB_NAME: "makerventures"
+  - WORDPRESS_DB_USER: "makerventures"
+  - WORDPRESS_DB_PASSWORD: "bieShid3eiquah1b"
+  - NR_INSTALL_KEY: "2d94e58eef4e96d708ca5395c6f5d7df60cebdd5"
+  links:
+  - mysql:mysql 
+  volumes:
+  - /var/www/makerventures:/var/www/makerventures
+  ports:
+  - 1081:9000
+  image: nixel/wordpress-newrelic
+
+wroloson:
+  restart: always
+  name: wroloson
+  host: wroloson
+  environment:
+  - WORDPRESS_DB_NAME: "wroloson"
+  - WORDPRESS_DB_USER: "wroloson"
+  - WORDPRESS_DB_PASSWORD: "Hah9ieThaitaiLai"
+  - NR_INSTALL_KEY: "2d94e58eef4e96d708ca5395c6f5d7df60cebdd5"
+  links:
+  - mysql:mysql 
+  volumes:
+  - /var/www/wroloson:/var/www/wroloson
+  ports:
+  - 1082:9000
+  image: nixel/wordpress-newrelic
+
+growcap:
+  restart: always
+  name: growcap
+  host: growcap
+  environment:
+  - WORDPRESS_DB_NAME: "growcap"
+  - WORDPRESS_DB_USER: "growcap"
+  - WORDPRESS_DB_PASSWORD: "beaMa7meNoo8eef8"
+  - NR_INSTALL_KEY: "2d94e58eef4e96d708ca5395c6f5d7df60cebdd5"
+  links:
+  - mysql:mysql 
+  volumes:
+  - /var/www/growcap:/var/www/growcap
+  ports:
+  - 1083:9000
+  image: nixel/wordpress-newrelic
+
+nginx:
+  restart: always
+  name: nginx
+  ports:
+  - 80:80
+  volumes:
+  - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
+  - /var/www:/var/www:ro
+  images: nginx
